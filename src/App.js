@@ -9,7 +9,9 @@ class App extends Component {
     return (
       <div>
         <Navbar/>
-        <Routes/>
+        <div className="routes-container">
+          <Routes/>
+        </div>
       </div>
     );
   }

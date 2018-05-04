@@ -1,0 +1,26 @@
+.log-users-container{
+    width: 100%;
+    height: calc(100vh - 64px);
+    background-image: url('https://images.pexels.com/photos/539447/pexels-photo-539447.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+.overlay{
+  height: calc(100vh - 64px);
+  width: 100%;
+  background-color: rgba(255,255,255,.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.log-form{
+  
+  width: 100%;
+  height: auto;
+  padding: 5% 10%;
+
+}
