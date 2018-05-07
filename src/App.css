@@ -12,3 +12,4 @@ body {
 }
 
 @import './components/users/users.css';
+@import './components/products/products.css';
