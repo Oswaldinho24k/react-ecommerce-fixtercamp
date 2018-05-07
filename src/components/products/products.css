@@ -1,5 +1,31 @@
 .products-page-container{
     width: 100%;
     height: 100vh;
-    padding: 0 10%;
+    padding: 0 5%;
+}
+
+.filters-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*Detail Product  css*/
+
+.detail-container{
+    width: 100%;
+    padding: 5%;
+}
+.card-product{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+.card-product img{
+    width: 500px;
+    height: 500px;
+}
+.card-product > div{
+    width: 50%;
+    padding: 2%;
 }
