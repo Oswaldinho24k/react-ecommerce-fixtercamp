@@ -3,6 +3,11 @@
     height: 100vh;
     padding: 0 5%;
 }
+.products-page-container img{
+    height: 350px;
+    width: 300px !;
+
+}
 
 .filters-container{
     width: 100%;

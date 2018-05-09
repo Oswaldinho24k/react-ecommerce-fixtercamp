@@ -16,7 +16,7 @@ class ProductDetail extends Component{
                             </h1>
                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium voluptas, atque maiores assumenda omnis, cumque nulla ipsa labore quaerat consequatur quisquam tempore ipsam dolore officiis, maxime tenetur voluptates vel perspiciatis.</p>
                             <h4>$500</h4>
-                            <RaisedButton label="Full width" fullWidth={true} />
+                            <RaisedButton label="Add to Cart" primary fullWidth={true} />
                         </div>
                     </div>
                 </Card>

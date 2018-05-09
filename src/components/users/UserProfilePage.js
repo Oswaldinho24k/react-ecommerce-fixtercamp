@@ -5,7 +5,9 @@ import OrdersList from '../orders/OrdersList';
 
 
 class UserProfilePage extends Component{
+
     render(){
+        console.log(this.props)
         return(
             <GridList cols={4} cellHeight={"auto"}>
                 <GridTile cols={1}>

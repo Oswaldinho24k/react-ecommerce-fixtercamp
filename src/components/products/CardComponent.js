@@ -1,11 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {Card, CardActions, CardMedia, CardTitle, CardText, FlatButton, RaisedButton} from 'material-ui'
+import {Card, CardActions, CardMedia, CardTitle, RaisedButton, FlatButton, Paper} from 'material-ui'
 
 
-export const CardComponent =({id, photo, name, price, description}) =>(
-   <Link to={`/products/${id}`}>
-     <Card style={{padding:'0 2%'}}>
+export const CardComponent =({id, photo, name, price, description, addItem, product, removeItem}) =>(
+   
+     <Paper zDepth={2} style={{padding:'0 2%'}}>
         <CardMedia
         overlay={<CardTitle title={name} subtitle={name}  />}
         >
@@ -14,9 +14,14 @@ export const CardComponent =({id, photo, name, price, description}) =>(
         <CardTitle subtitle={description}/>
         
         <CardActions>
-            
-            <RaisedButton fullWidth={true} primary={true} label="Add" children={[]}/>
+            <Link to={`/products/${id}`}>
+                <FlatButton style={{width:'45%'}} primary={true} label="Info"/>
+            </Link>
+            <RaisedButton 
+                style={{width:'45%'}} 
+                primary={true} label="Add" 
+                onClick={()=>addItem(product)}/>
         </CardActions>
-  </Card>
-   </Link>
+    </Paper>
+   
 );

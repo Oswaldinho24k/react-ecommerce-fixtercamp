@@ -3,18 +3,22 @@ import {TextField, RaisedButton, FlatButton} from 'material-ui';
 import {Link} from 'react-router-dom';
 
 
-export const LoginForm = ({props}) => (
+export const LoginForm = ({email, password, logIn, handleText, user}) => (
     <div className="log-form">
         <h2>LogIn</h2>
-        <form action="">
+        <form action="" >
         <TextField
+            onChange={handleText}
+            name={'username'}
             hintText="usuario@company.com"
             floatingLabelFixed={true}
             floatingLabelText="Email"
             fullWidth={true}
-            type={'email'}
+            
             /><br />
         <TextField
+            onChange={handleText}
+            name={'password'}
             fullWidth={true}
             hintText="**********"
             type={'password'}
@@ -22,6 +26,7 @@ export const LoginForm = ({props}) => (
             floatingLabelText="Password"
             /><br />
         <RaisedButton 
+                onClick={()=>logIn(user)}
                 label="Sign In" 
                 fullWidth={true} 
                 primary={true}/>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { ProductsList } from './ProductsList';
-import {TextField} from 'material-ui';
+//import {TextField} from 'material-ui';
 import {Filters} from './Filters'
 
 
@@ -10,50 +10,55 @@ class ProductsPage extends Component{
     state = {
         search:'',
         category:'',
-        products:[
-            {
-                id:1,
-                name:'dulce1',
-                price:40,
-                category:1,
-                description:'blablabla',
-                photo:'https://images.pexels.com/photos/51352/gummibarchen-color-candy-nibble-51352.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-            },
-            {
-                id:2,
-                name:'dulce2',
-                price:40,
-                category:1,
-                description:'blablabla',
-                photo:'https://images.pexels.com/photos/51352/gummibarchen-color-candy-nibble-51352.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-            },
-            {
-                id:3,
-                name:'dulce3',
-                price:40,
-                category:2,
-                description:'blablabla',
-                photo:'https://images.pexels.com/photos/51352/gummibarchen-color-candy-nibble-51352.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-            },
-            {
-                id:4,
-                name:'dulce4',
-                price:40,
-                category:2,
-                description:'blablabla',
-                photo:'https://images.pexels.com/photos/51352/gummibarchen-color-candy-nibble-51352.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-            }
-        ],
-        categories:[
-            {
-                id:1,
-                name:'picantes'
-            },
-            {
-                id:2,
-                name:'gomitas'
-            }
-        ],
+        products:[],
+        categories:[],
+    }
+    componentWillMount(){
+        this.getProducts()
+        this.getCategories()
+    }
+
+    getProducts=()=>{
+        //const userToken = JSON.parse(localStorage.getItem('userRanchoToken'));
+        let url = 'http://localhost:8000/products/';
+        var request = new Request(url, {
+            method: 'GET',
+            //body: data,
+            headers: new Headers({
+                //'Authorization':'Token '+userToken,
+                'Content-Type': 'application/json'
+            })
+        });
+        fetch(request)
+            .then(r=>r.json())
+            .then(data=>{
+                console.log(data)
+                this.setState({products:data})
+            })
+            .catch(e=>{
+                console.log(e)
+        })
+    }
+    getCategories=()=>{
+        //const userToken = JSON.parse(localStorage.getItem('userRanchoToken'));
+        let url = 'http://localhost:8000/categories/';
+        var request = new Request(url, {
+            method: 'GET',
+            //body: data,
+            headers: new Headers({
+                //'Authorization':'Token '+userToken,
+                'Content-Type': 'application/json'
+            })
+        });
+        fetch(request)
+            .then(r=>r.json())
+            .then(data=>{
+                console.log(data)
+                this.setState({categories:data})
+            })
+            .catch(e=>{
+                console.log(e)
+        })
     }
 
     handleSearch=(e)=>{
@@ -66,6 +71,7 @@ class ProductsPage extends Component{
     }
     render(){
         let {products, search, category, categories} = this.state;
+        let {addItem, removeItem} = this.props
         const regEx = new RegExp(search, 'i');
         let filteredProducts = products.filter(i=>{
             return regEx.test(i.name)
@@ -84,6 +90,8 @@ class ProductsPage extends Component{
                     handleCategory={this.handleCategory}
                     handleSearch={this.handleSearch}/>
                 <ProductsList 
+                    removeItem={removeItem}
+                    addItem={addItem}
                     products={filteredProducts}/>
             </div>
         );

@@ -3,21 +3,21 @@ import { ListItem, Avatar, FloatingActionButton } from 'material-ui';
 import Add from 'material-ui/svg-icons/content/add'
 import Minus from 'material-ui/svg-icons/content/remove'
 
-export const CartCard = ({photo, name, price, addOne, removeOne}) => (
+export const CartCard = ({product, subtotal,quantity, addItem, removeItem}) => (
     <ListItem
     value={3}
     disabled
     children={[
         <span className="cart-card-container">
-        <Avatar src="{photo}" />
-            <FloatingActionButton primary={true} mini={true}>
+        <Avatar size={100} src={product.photo} />
+            <FloatingActionButton primary={true} mini={true} onClick={()=>addItem(product)}>
                 <Add/>
             </FloatingActionButton>
-            <span>#</span>
-            <FloatingActionButton secondary={true} mini={true}>
+            <span>#{quantity}</span>
+            <FloatingActionButton secondary={true} mini={true} onClick={()=>removeItem(product)}>
                 <Minus/>
             </FloatingActionButton>
-            <span>$200</span>
+            <span>${subtotal}</span>
 
         </span>
     ]}

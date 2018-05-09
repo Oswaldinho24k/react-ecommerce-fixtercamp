@@ -6,26 +6,29 @@ import ProductsIcon from 'material-ui/svg-icons/maps/store-mall-directory';
 import CartIcon from 'material-ui/svg-icons/action/shopping-cart';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import { Cart } from './Cart';
-import { spacing } from 'material-ui/styles';
 
 
-const Logged = ({}) => (
-    <IconMenu
-    iconButtonElement={
-      <IconButton><MoreVertIcon /></IconButton>
-    }
-    targetOrigin={{horizontal: 'right', vertical: 'top'}}
-    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-  >
-    <Link to="/profile">
-    <MenuItem primaryText="Profile" />
-    </Link>
-    <MenuItem primaryText="Help" />
-    <MenuItem primaryText="Sign out" />
-  </IconMenu>
+const Logged = ({logOut, handleCart}) => (
+   <span>
+        <IconButton onClick={handleCart}>
+            <CartIcon/>
+        </IconButton>
+        <IconMenu
+        iconButtonElement={
+        <IconButton><MoreVertIcon /></IconButton>
+        }
+        targetOrigin={{horizontal: 'right', vertical: 'top'}}
+        anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+    >
+        <Link to="/profile">
+        <MenuItem primaryText="Profile" />
+        </Link>
+        <MenuItem primaryText="Sign out" onClick={logOut}/>
+    </IconMenu>
+   </span>
 );
 
-const Login = ({}) => (
+const Login = ({props}) => (
     <Link to="/signin">
         <FlatButton label="Login" />
     </Link>
@@ -34,25 +37,30 @@ const Login = ({}) => (
 class Navbar extends React.Component{
 
     state={
-        logged:true,
+        //logged:false,
         open:false,
-        products:[]
+        products:[],
+        user:{}
     }
+    
+    
     handleCart = () => {
         this.setState({open:!this.state.open})
     }
 
     render(){
-        let {logged, open, products} = this.state;
+        let {open, products} = this.state;
+        let {logged, cart, addItem, removeItem} = this.props;
         return(
             <div>
                 <AppBar
                     iconElementRight={
                         <span>
-                             <IconButton onClick={this.handleCart}>
-                                <CartIcon/>
-                            </IconButton>
-                            {logged ? <Logged /> : <Login />}
+                             
+                            {logged ? 
+                            <Logged 
+                                handleCart={this.handleCart}
+                                logOut={this.props.logOut}/> : <Login />}
                         </span>
                     }
                     iconElementLeft={
@@ -71,7 +79,10 @@ class Navbar extends React.Component{
                     }
                     />
                 <Cart open={open}
+                    addItem={addItem}
+                    removeItem={removeItem}
                     handleCart={this.handleCart}
+                    cart={cart}
                     products={products}/>
             </div>
         );
