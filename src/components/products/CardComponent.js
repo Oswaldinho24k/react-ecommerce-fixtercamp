@@ -15,7 +15,7 @@ export const CardComponent =({id, photo, name, price, description}) =>(
         
         <CardActions>
             
-            <RaisedButton fullWidth={true} primary={true} label="Add" />
+            <RaisedButton fullWidth={true} primary={true} label="Add" children={[]}/>
         </CardActions>
   </Card>
    </Link>
