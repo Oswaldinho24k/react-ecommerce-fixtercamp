@@ -1,23 +1,21 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {Card, CardActions, CardMedia, CardTitle, CardText, FlatButton} from 'material-ui'
+import {Card, CardActions, CardMedia, CardTitle, CardText, FlatButton, RaisedButton} from 'material-ui'
 
 
 export const CardComponent =({id, photo, name, price, description}) =>(
    <Link to={`/products/${id}`}>
-     <Card>
+     <Card style={{padding:'0 2%'}}>
         <CardMedia
-        overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
+        overlay={<CardTitle title={name} subtitle={name}  />}
         >
-        <img src={photo} alt="" />
+            <img src={photo} alt="" />
         </CardMedia>
-        <CardTitle title={name} subtitle={name} />
-        <CardText>
-        {description}
-        </CardText>
+        <CardTitle subtitle={description}/>
+        
         <CardActions>
-        <FlatButton label="Ver" />
-        <FlatButton label="Add" />
+            
+            <RaisedButton fullWidth={true} primary={true} label="Add" />
         </CardActions>
   </Card>
    </Link>

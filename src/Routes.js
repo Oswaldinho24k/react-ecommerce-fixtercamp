@@ -5,6 +5,8 @@ import ProductsPage from './components/products/ProductsPage';
 import LogUsersPage from './components/users/LogUsersPage';
 import UserProfilePage from './components/users/UserProfilePage';
 import ProductDetail from './components/products/ProductDetail';
+import Payment from './components/payment/Payment';
+import CheckoutPage from './components/payment/CheckoutPage';
 
 
 export const Routes = () => (
@@ -15,5 +17,7 @@ export const Routes = () => (
         <Route path="/signin" component={LogUsersPage}/>
         <Route path="/signup" component={LogUsersPage}/>
         <Route path="/profile" component={UserProfilePage}/>
+        <Route path="/checkout" component={CheckoutPage}/>
+        <Route path="/payment" component={Payment}/>
     </Switch>
 )

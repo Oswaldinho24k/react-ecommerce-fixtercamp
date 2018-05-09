@@ -1,0 +1,17 @@
+.center-box{
+    box-sizing: border-box;
+    height: calc(100vh - 100px);
+    width: 100%;
+    padding: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.products-list{
+    height: 70vh;
+    overflow-y: scroll;
+}
+.products-list::-webkit-scrollbar{
+    display: none
+}

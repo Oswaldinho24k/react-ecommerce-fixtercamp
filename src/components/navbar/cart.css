@@ -1,0 +1,15 @@
+.cart-card-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.cart-list{
+    height: calc(100vh - 200px);
+    overflow-y: scroll;
+}
+
+.cart-list::-webkit-scrollbar{
+    display: none;
+}

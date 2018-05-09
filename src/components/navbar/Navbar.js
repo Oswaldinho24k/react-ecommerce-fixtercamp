@@ -2,8 +2,11 @@ import React from 'react';
 import {AppBar, IconButton, IconMenu, MenuItem, FlatButton} from 'material-ui'
 import {Link} from 'react-router-dom';
 import HomeIcon from 'material-ui/svg-icons/action/home';
+import ProductsIcon from 'material-ui/svg-icons/maps/store-mall-directory';
 import CartIcon from 'material-ui/svg-icons/action/shopping-cart';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
+import { Cart } from './Cart';
+import { spacing } from 'material-ui/styles';
 
 
 const Logged = ({}) => (
@@ -31,20 +34,45 @@ const Login = ({}) => (
 class Navbar extends React.Component{
 
     state={
-        logged:true
+        logged:true,
+        open:false,
+        products:[]
+    }
+    handleCart = () => {
+        this.setState({open:!this.state.open})
     }
 
     render(){
+        let {logged, open, products} = this.state;
         return(
             <div>
                 <AppBar
-                    iconElementRight={this.state.logged ? <Logged /> : <Login />}
+                    iconElementRight={
+                        <span>
+                             <IconButton onClick={this.handleCart}>
+                                <CartIcon/>
+                            </IconButton>
+                            {logged ? <Logged /> : <Login />}
+                        </span>
+                    }
                     iconElementLeft={
-                   <Link to="/">
-                     <IconButton>
-                        <HomeIcon/>
-                    </IconButton>
-                    </Link>}/>
+                    <span>
+                        <Link to="/">
+                            <IconButton>
+                                <HomeIcon/>
+                            </IconButton>
+                        </Link>
+                        <Link to="/products">
+                            <IconButton>
+                                <ProductsIcon/>
+                            </IconButton>
+                        </Link>
+                    </span>    
+                    }
+                    />
+                <Cart open={open}
+                    handleCart={this.handleCart}
+                    products={products}/>
             </div>
         );
     }

@@ -10,6 +10,15 @@ body {
 .routes-container{
 
 }
+.center-box{
+  width: 100%;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @import './components/users/users.css';
 @import './components/products/products.css';
+@import './components/navbar/cart.css';
+@import './components/payment/payment.css';

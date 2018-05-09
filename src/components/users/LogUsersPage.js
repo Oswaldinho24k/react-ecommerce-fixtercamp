@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {LoginForm} from './LoginForm'
 import {RegisterForm} from './RegisterForm'
-import {Card} from 'material-ui'
+import {Paper} from 'material-ui'
 
 
 
@@ -12,9 +12,9 @@ class LogUsersPage extends Component{
         return(
             <div className="log-users-container">
               <div className="overlay">
-                <Card style={{width:'30%'}}>
-                {path==='/signin'?<LoginForm/>:<RegisterForm/>}
-                </Card>  
+                <Paper zDepth={2} style={{width:'30%'}}>
+                 {path==='/signin'?<LoginForm/>:<RegisterForm/>}
+                </Paper>  
                 </div>
             </div>
         )
