@@ -53,6 +53,10 @@ class LogUsersPage extends Component{
                 console.log(e)
         })
     }
+    logInUser=(e)=>{
+        e.preventDefault()
+        this.props.logIn(this.state.user)
+    }
 
     render(){
         let {user, newUser} = this.state;
@@ -67,7 +71,7 @@ class LogUsersPage extends Component{
                         {...user}
                         user={user}
                         handleText={this.handleText}
-                        logIn={logIn}/>
+                        logIn={this.logInUser}/>
                     :
                     <RegisterForm
                         {...newUser}

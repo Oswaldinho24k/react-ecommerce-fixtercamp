@@ -2,13 +2,11 @@ import React from 'react'
 import {OrderCard} from './OrderCard';
 
 
-class OrdersList extends React.Component{
-    render(){
-        return(
+const OrdersList =({orders})=>(
             <div>
-                <OrderCard/>
+                {orders.map((o, key)=>(
+                    <OrderCard {...o} key={key}/>
+                ))}
             </div>
-        );
-    }
-}
+)
 export default OrdersList

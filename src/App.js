@@ -39,22 +39,21 @@ addItem=(product)=>{
   
   cart.items = filtered
   this.setState({cart})
+  this.getTotal()
   console.log(cart)
+}
+getTotal=()=>{
+  //let cart = Object.assign({}, this.state.cart)
+  let {cart} = this.state;
+  cart.total = 0;
+  for(let i in cart.items){
+    console.log(cart.items[i])
+    cart.total += cart.items[i].subtotal
+  }
+  this.setState({cart})
 }
 
 removeItem=(product)=>{
-  /*
-    if(item.amount >1){
-                item.amount-=1;
-            }else {item.amount =1}
-
-            return [ ...state.map( i => {
-              if(i.product.id === action.item.product.id){
-                  return item
-              }
-              return i
-            })];
-  */ 
   let {cart} = this.state
 
   let filtered = cart.items.filter(i=>{
@@ -71,6 +70,7 @@ removeItem=(product)=>{
   
   cart.items = filtered
   this.setState({cart})
+  this.getTotal()
   console.log(cart)
 }
 
@@ -99,11 +99,10 @@ logIn=(user)=>{
   });
   fetch(request)
       .then(r=>{
-        if(!r.ok) {
-          console.log(r)
-        }else{
-          return r.json()
-        }
+        if(r.ok)return r.json()
+        console.log(r.json())
+        
+        
       })
       .then(data=>{
           console.log(data)
@@ -133,6 +132,7 @@ logOut=()=>{
           addItem={this.addItem}/>
         <div className="routes-container">
           <Routes
+            cart={cart}
             removeItem={this.removeItem}
             addItem={this.addItem}
             logIn={this.logIn}

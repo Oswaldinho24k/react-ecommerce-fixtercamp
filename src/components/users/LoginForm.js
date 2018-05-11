@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 export const LoginForm = ({email, password, logIn, handleText, user}) => (
     <div className="log-form">
         <h2>LogIn</h2>
-        <form action="" >
+        <form action="" onSubmit={logIn}>
         <TextField
             onChange={handleText}
             name={'username'}
@@ -26,7 +26,7 @@ export const LoginForm = ({email, password, logIn, handleText, user}) => (
             floatingLabelText="Password"
             /><br />
         <RaisedButton 
-                onClick={()=>logIn(user)}
+                type={'submit'}
                 label="Sign In" 
                 fullWidth={true} 
                 primary={true}/>

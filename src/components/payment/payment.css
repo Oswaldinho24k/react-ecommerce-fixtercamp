@@ -12,6 +12,9 @@
     height: 70vh;
     overflow-y: scroll;
 }
+.products-list .cart-list{
+    height: 60vh;
+}
 .products-list::-webkit-scrollbar{
     display: none
 }

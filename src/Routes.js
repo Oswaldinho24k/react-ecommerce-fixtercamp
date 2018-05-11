@@ -20,7 +20,7 @@ class Routes extends React.Component{
     //         logIn={this.props.logIn}/>
     // )
     render(){
-        let {logged, logIn, addItem, removeItem} = this.props;
+        let {logged, logIn, addItem, removeItem, cart} = this.props;
         return(
             <Switch>
                 <Route exact path="/" component={HomePage}/> 
@@ -29,8 +29,8 @@ class Routes extends React.Component{
                 <Route path="/signin" render={props =>(logged?<Redirect to="/profile" />:<LogUsersPage {...props} logIn={logIn}/>)}/>
                 <Route path="/signup" render={props =>(logged?<Redirect to="/profile" />:<LogUsersPage {...props}/>)}/>
                 <Route path="/profile" render={()=>(logged?<UserProfilePage/>:<Redirect to="signin"/>)}/>
-                <Route path="/checkout" component={CheckoutPage}/>
-                <Route path="/payment" component={Payment}/>
+                <Route path="/checkout" render={(props)=>(logged?<CheckoutPage {...props} cart={cart} removeItem={removeItem} addItem={addItem}/>:<Redirect to="products"/>)}/>
+                <Route path="/payment/:id" render={(props)=>(logged?<Payment  {...props} cart={cart}/>:<Redirect to="products"/>)}/>
             </Switch>
         )
     }

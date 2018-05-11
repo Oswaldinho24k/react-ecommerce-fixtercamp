@@ -5,11 +5,11 @@ import {Card, CardActions, CardMedia, CardTitle, RaisedButton, FlatButton, Paper
 
 export const CardComponent =({id, photo, name, price, description, addItem, product, removeItem}) =>(
    
-     <Paper zDepth={2} style={{padding:'0 2%'}}>
+     <Paper zDepth={2} >
         <CardMedia
-        overlay={<CardTitle title={name} subtitle={name}  />}
+            overlay={<CardTitle title={name} subtitle={name} />}
         >
-            <img src={photo} alt="" />
+            <img src={photo} alt=""/>
         </CardMedia>
         <CardTitle subtitle={description}/>
         
