@@ -2,7 +2,7 @@
   "name": "fixter-e-commerce",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://oswaldinho24k.github.io/react-ecommerce",
+  "homepage": "http://oswaldinho24k.github.io/react-ecommerce-fixtercamp",
   "dependencies": {
     "material-ui": "^0.20.0",
     "moment": "^2.22.1",
